@@ -1,0 +1,41 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/multi_tenancy_client?currentSchema=${multiTenancy.databaseSchema}
+    username: developer
+    password: pass123
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+server:
+  port: ${PORT:8062}
+
+security:
+  oauth2:
+    client:
+      clientId: uaa-service
+      clientSecret: 'Testing4#'
+      grantType: client_credentials
+      accessTokenUri: http://127.0.0.1:8063/oauth/token
+    resource:
+      id: ${security.oauth2.client.clientId}
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgaKixqVG0FRVdZ8gAgVp
+          VCn4FCWua1IUOoQerpcAFqL+WO2/2ImSUHk2gdejdcMg15wXYQX4eO2KSA+vGleN
+          tWrnF5GkSwaAHqEp5fj7wqJajuhkR9wlj0+ab2jmuLBp/c6DhN4yZL1N7trOOpJZ
+          IP2HyqhkeBS08Iygc2wI+/w/wlARglZ0jyUb+oexYOhSrzedKHpFlFPsxs4I1Ana
+          7z/psspZcl6G6yAzMnZxbTRbEVaqAQBDYc0NGx35GJhy2voB9rgk5IdWAehPhtAP
+          RXfg2fD3YF3vbS1lziaI0/bnb/yLxcq6jQC2Rh2llLz+xSyO5JQxkv/GaVz2kMaD
+          FQIDAQAB
+          -----END PUBLIC KEY-----
+
+multiTenancy:
+  strategy: DATABASE
+  databaseSchema: online_shopping
+  packagesToScanEntityClasses: com.zamacloud.multitenancyclient
+  packagesToScanJpaRepositories: com.zamacloud.multitenancyclient
