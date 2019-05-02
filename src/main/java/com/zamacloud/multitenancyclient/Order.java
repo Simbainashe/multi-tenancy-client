@@ -1,5 +1,8 @@
 package com.zamacloud.multitenancyclient;
 
+import com.zamacloud.commons.multitenancy.tenant.TenantDetails;
+import com.zamacloud.commons.multitenancy.tenant.TenantIdentifiable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -12,7 +15,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "orders")
-public class Order implements Serializable {
+public class Order implements Serializable, TenantIdentifiable {
     @Id
     @GeneratedValue
     private Long id;
@@ -21,6 +24,8 @@ public class Order implements Serializable {
     private Date orderDate;
     @NotNull
     private Double amount;
+    @Embedded
+    private Tenant tenant;
 
     public Order() {
         this.orderDate=new Date();
@@ -57,6 +62,15 @@ public class Order implements Serializable {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(TenantDetails tenant) {
+        this.tenant = (Tenant) tenant;
     }
 
     @Override

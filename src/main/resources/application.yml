@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/multi_tenancy_client?currentSchema=${multiTenancy.databaseSchema}
+    url: jdbc:postgresql://127.0.0.1:5432/multi_tenancy_discriminator_strategy
     username: developer
     password: pass123
   jpa:
@@ -35,7 +35,11 @@ security:
           -----END PUBLIC KEY-----
 
 multiTenancy:
-  strategy: DATABASE
-  databaseSchema: online_shopping
+  strategy: DISCRIMINATOR
   packagesToScanEntityClasses: com.zamacloud.multitenancyclient
   packagesToScanJpaRepositories: com.zamacloud.multitenancyclient
+logging:
+  level:
+    com:
+      zamacloud:
+        multitenancyclient: trace

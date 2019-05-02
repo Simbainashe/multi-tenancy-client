@@ -9,7 +9,8 @@ CREATE SEQUENCE hibernate_sequence
 CREATE TABLE orders (
     id bigint NOT NULL,
     amount double precision NOT NULL,
-    order_date timestamp without time zone
+    order_date timestamp without time zone,
+    tenant_id bigint
 );
 
 
