@@ -41,5 +41,4 @@ multiTenancy:
 logging:
   level:
     com:
-      zamacloud:
-        multitenancyclient: trace
+      zamacloud: trace

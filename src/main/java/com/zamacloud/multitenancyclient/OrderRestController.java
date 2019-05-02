@@ -33,7 +33,8 @@ public class OrderRestController {
 
     @GetMapping
     public List<Order> getOrders(){
-        Long tenantId= Optional.ofNullable(userContextService.getUserContext()).map(UserContext::getTenantId).orElse(null);
-        return orderRepository.findByTenant_Id(tenantId);
+        //Long tenantId= Optional.ofNullable(userContextService.getUserContext()).map(UserContext::getTenantId).orElse(null);
+       // return orderRepository.findByTenant_Id(tenantId);
+        return orderRepository.findAll();
     }
 }
