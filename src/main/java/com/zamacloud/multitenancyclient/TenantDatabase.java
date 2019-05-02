@@ -1,6 +1,6 @@
 package com.zamacloud.multitenancyclient;
 
-import com.zamacloud.commons.multitenancy.hibernate.strategy.database.TenantDatabaseDetails;
+import com.zamacloud.commons.multitenancy.strategy.hibernate.database.TenantDatabaseDetails;
 
 /**
  * @author Fact S Musingarimi

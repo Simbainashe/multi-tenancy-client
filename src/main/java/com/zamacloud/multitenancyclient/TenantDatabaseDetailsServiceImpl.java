@@ -1,7 +1,7 @@
 package com.zamacloud.multitenancyclient;
 
-import com.zamacloud.commons.multitenancy.hibernate.strategy.database.TenantDatabaseDetails;
-import com.zamacloud.commons.multitenancy.hibernate.strategy.database.TenantDatabaseDetailsService;
+import com.zamacloud.commons.multitenancy.strategy.hibernate.database.TenantDatabaseDetails;
+import com.zamacloud.commons.multitenancy.strategy.hibernate.database.TenantDatabaseDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
